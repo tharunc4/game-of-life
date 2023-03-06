@@ -26,5 +26,7 @@ public class Main {
         System.out.println("Board Initialized successfully");
         System.out.println("Printing Board");
         boardHelper.printBoard(board);
+        System.out.println("Starting the Game");
+        boardHelper.play(board,ticks);
     }
 }

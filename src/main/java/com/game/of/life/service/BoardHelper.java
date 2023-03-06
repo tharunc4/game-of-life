@@ -9,8 +9,8 @@ public class BoardHelper {
     public void initialize(Board board){
 
         int[][] grid = board.getBoard();
-        int rows = grid.length;
-        int columns = grid[0].length;
+        int rows = board.getRows();
+        int columns = board.getColumns();
         int start = 0 , end = 1;
         Random random = new Random();
         for(int r=0;r<rows;r++){
@@ -23,15 +23,16 @@ public class BoardHelper {
 
     public void printBoard(Board board){
         int[][] grid = board.getBoard();
-        int rows = grid.length;
-        int columns = grid[0].length;
-
+        int rows = board.getRows();
+        int columns = board.getColumns();
+        System.out.println("----------------------");
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 System.out.print(grid[r][c]+" ");
             }
             System.out.println();
         }
+        System.out.println("----------------------");
     }
 
     public void play(Board board, int ticks) {
@@ -56,7 +57,7 @@ public class BoardHelper {
                         }
                     }
                     if (grid[r][c] == 1)
-                        nextGrid[r][c] = liveNeighbours >= 2 ? 1 : 0;
+                        nextGrid[r][c] = (liveNeighbours == 2 || liveNeighbours == 3) ? 1 : 0;
                     else
                         nextGrid[r][c] = liveNeighbours == 3 ? 1 : 0;
                 }

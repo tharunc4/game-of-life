@@ -8,6 +8,8 @@ public class Board {
     public Board(int rows, int columns){
 
         board = new int[rows][columns];
+        this.rows = rows;
+        this.columns = columns;
     }
 
     public int getRows() {
