@@ -50,12 +50,15 @@ public class BoardHelper {
                         for (int j = -1; j <= 1; j++) {
                             int newRow = r + i;
                             int newCol = c + j;
+                            if(newRow == r && newCol == c)
+                                continue;
                             if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < columns) {
                                 if (grid[newRow][newCol] == 1)
                                     liveNeighbours++;
                             }
                         }
                     }
+                    //System.out.println(r+" "+c+" "+grid[r][c]+" "+liveNeighbours);
                     if (grid[r][c] == 1)
                         nextGrid[r][c] = (liveNeighbours == 2 || liveNeighbours == 3) ? 1 : 0;
                     else
