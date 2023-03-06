@@ -6,35 +6,7 @@ import java.util.Random;
 
 public class BoardHelper {
 
-    public void initialize(Board board){
-
-        int[][] grid = board.getBoard();
-        int rows = board.getRows();
-        int columns = board.getColumns();
-        int start = 0 , end = 1;
-        Random random = new Random();
-        for(int r=0;r<rows;r++){
-            for(int c=0;c<columns;c++){
-                grid[r][c] = random.nextInt((end-start)+1)+start;
-            }
-        }
-        board.setBoard(grid);
-    }
-
-    public void printBoard(Board board){
-        int[][] grid = board.getBoard();
-        int rows = board.getRows();
-        int columns = board.getColumns();
-        System.out.println("-----------------BOARD PRINT START-----------------");
-        for(int r=0;r<rows;r++){
-            for(int c=0;c<columns;c++){
-                System.out.print(grid[r][c]+" ");
-            }
-            System.out.println();
-        }
-        System.out.println("-----------------BOARD PRINT END-----------------");
-        System.out.println();
-    }
+    BoardPrinter boardPrinter = new BoardPrinter();
 
     public void play(Board board, int ticks) {
 
@@ -69,7 +41,7 @@ public class BoardHelper {
                 }
             }
             board.setBoard(nextGrid);
-            printBoard(board);
+            boardPrinter.printBoard(board);
         }
     }
 }
