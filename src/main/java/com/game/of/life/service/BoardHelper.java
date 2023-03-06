@@ -25,14 +25,15 @@ public class BoardHelper {
         int[][] grid = board.getBoard();
         int rows = board.getRows();
         int columns = board.getColumns();
-        System.out.println("----------------------");
+        System.out.println("-----------------BOARD PRINT START-----------------");
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 System.out.print(grid[r][c]+" ");
             }
             System.out.println();
         }
-        System.out.println("----------------------");
+        System.out.println("-----------------BOARD PRINT END-----------------");
+        System.out.println();
     }
 
     public void play(Board board, int ticks) {
@@ -46,10 +47,12 @@ public class BoardHelper {
             for (int r = 0; r < rows; r++) {
                 for (int c = 0; c < columns; c++) {
                     int liveNeighbours = 0;
+                    // Will check for all the neighbours including itself
                     for (int i = -1; i <= 1; i++) {
                         for (int j = -1; j <= 1; j++) {
                             int newRow = r + i;
                             int newCol = c + j;
+                            //No need to check the current cell health , we only need to calculate the live neighbours
                             if(newRow == r && newCol == c)
                                 continue;
                             if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < columns) {
